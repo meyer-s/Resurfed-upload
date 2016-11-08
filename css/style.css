@@ -45,135 +45,65 @@ input::-ms-clear, textarea::-ms-clear {
 
 /* -------------------------------- 
 
-Main components 
+Checklist 
 
 -------------------------------- */
-header[role=banner] {
-  position: relative;
-  height: 50px;
-  background: #343642;
-}
-header[role=banner] #cd-logo {
-  float: left;
-  margin: 4px 0 0 5%;
-  /* reduce logo size on mobile and make sure it is left aligned with the transform-origin property */
-  -webkit-transform-origin: 0 50%;
-  -moz-transform-origin: 0 50%;
-  -ms-transform-origin: 0 50%;
-  -o-transform-origin: 0 50%;
-  transform-origin: 0 50%;
-  -webkit-transform: scale(0.8);
-  -moz-transform: scale(0.8);
-  -ms-transform: scale(0.8);
-  -o-transform: scale(0.8);
-  transform: scale(0.8);
-}
-header[role=banner] #cd-logo img {
-  display: block;
-}
-header[role=banner]::after {
-  /* clearfix */
-  content: '';
-  display: table;
-  clear: both;
-}
-@media only screen and (min-width: 768px) {
-  header[role=banner] {
-    height: 80px;
-  }
-  header[role=banner] #cd-logo {
-    margin: 20px 0 0 5%;
-    -webkit-transform: scale(1);
-    -moz-transform: scale(1);
-    -ms-transform: scale(1);
-    -o-transform: scale(1);
-    transform: scale(1);
-  }
-}
+    /* Remove margins and padding from the list */
+    ul {
+      margin: 0;
+      padding: 0;
+      width:100%;
+    }
 
-.main-nav {
-  float: right;
-  margin-right: 5%;
-  width: 44px;
-  height: 100%;
-  background: url("../img/cd-icon-menu.svg") no-repeat center center;
-  cursor: pointer;
-}
-.main-nav ul {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  -webkit-transform: translateY(-100%);
-  -moz-transform: translateY(-100%);
-  -ms-transform: translateY(-100%);
-  -o-transform: translateY(-100%);
-  transform: translateY(-100%);
-}
-.main-nav ul.is-visible {
-  -webkit-transform: translateY(50px);
-  -moz-transform: translateY(50px);
-  -ms-transform: translateY(50px);
-  -o-transform: translateY(50px);
-  transform: translateY(50px);
-}
-.main-nav a {
-  display: block;
-  height: 50px;
-  line-height: 50px;
-  padding-left: 5%;
-  background: #292a34;
-  border-top: 1px solid #3b3d4b;
-  color: #FFF;
-}
-@media only screen and (min-width: 768px) {
-  .main-nav {
-    width: auto;
-    height: auto;
-    background: none;
-    cursor: auto;
-  }
-  .main-nav ul {
-    position: static;
-    width: auto;
-    -webkit-transform: translateY(0);
-    -moz-transform: translateY(0);
-    -ms-transform: translateY(0);
-    -o-transform: translateY(0);
-    transform: translateY(0);
-    line-height: 80px;
-  }
-  .main-nav ul.is-visible {
-    -webkit-transform: translateY(0);
-    -moz-transform: translateY(0);
-    -ms-transform: translateY(0);
-    -o-transform: translateY(0);
-    transform: translateY(0);
-  }
-  .main-nav li {
-    display: inline-block;
-    margin-left: 1em;
-  }
-  .main-nav li:nth-last-child(2) {
-    margin-left: 2em;
-  }
-  .main-nav a {
-    display: inline-block;
-    height: auto;
-    line-height: normal;
-    background: transparent;
-  }
-  .main-nav a.cd-signin, .main-nav a.cd-signup {
-    padding: .6em 1em;
-    border: 1px solid rgba(255, 255, 255, 0.6);
-    border-radius: 60em;
-  }
-  .main-nav a.cd-signup {
-    background: #2f889a;
-    border: none;
-  }
-}
+    /* Style the list items */
+    ul li {
+      cursor: pointer;
+      width:100%;
+      position: relative;
+      padding: 12px 8px 12px 40px;
+      background: #eee;
+      font-size: 18px;
+      transition: 0.2s;
+      
+      /* make the list items unselectable */
+      -webkit-user-select: none;
+      -moz-user-select: none;
+      -ms-user-select: none;
+      user-select: none;
+    }
 
+    /* Set all odd list items to a different color (zebra-stripes) */
+    ul li:nth-child(odd) {
+      background: #f9f9f9;
+    }
+
+    /* Darker background-color on hover */
+    ul li:hover {
+      background: #ddd;
+    }
+
+    /* When clicked on, add a background color and strike out text */
+    ul li.checked {
+      background: #888;
+      color: #fff;
+    }
+
+    /* Add a "checked" mark when clicked on */
+    ul li.checked::before {
+      content: '';
+      position: absolute;
+      border-color: #fff;
+      border-style: solid;
+      border-width: 0 2px 2px 0;
+      top: 10px;
+      left: 16px; 
+      transform: rotate(45deg);
+      height: 15px;
+      width: 7px;
+    }
+    input[type="checkbox"] {
+        display:none;
+    }
 /* -------------------------------- 
 
 xsigin/signup popup 
@@ -322,7 +252,7 @@ xsigin/signup popup
   width: 100%;
 }
 .cd-form input.has-padding {
-  padding: 12px 20px 12px 50px;
+  padding: 12px 20px     12px 50px;
 }
 .cd-form input.has-border {
   border: 1px solid #d2d8d8;

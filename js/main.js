@@ -1,3 +1,4 @@
+
 jQuery(document).ready(function($){
 	var formModal = $('.cd-user-modal'),
 		formLogin = formModal.find('#cd-login'),
@@ -11,34 +12,17 @@ jQuery(document).ready(function($){
 		mainNav = $('.main-nav');
 
 	//open modal
-	mainNav.on('click', function(event){
+	mainNav.on('load', function(event){
 		$(event.target).is(mainNav) && mainNav.children('ul').toggleClass('is-visible');
 	});
-/*
-	//open sign-up form
-	mainNav.on('click', '.cd-signup', signup_selected);
-	//open login-form form
-	mainNav.on('click', '.cd-signin', login_selected);
-
-	//close modal
-	formModal.on('click', function(event){
-		if( $(event.target).is(formModal) || $(event.target).is('.cd-close-form') ) {
-			formModal.removeClass('is-visible');
-		}	
-	});
-	//close modal when clicking the esc keyboard button
-	$(document).keyup(function(event){
-    	if(event.which=='27'){
-    		formModal.removeClass('is-visible');
-	    }
-    });
-*/
+    
 	//switch from a tab to another
 	formModalTab.on('click', function(event) {
 		event.preventDefault();
 		( $(event.target).is( tabLogin ) ) ? login_selected() : signup_selected();
 	});
-
+    
+    $(document.body.addEventListener('load', login_selected()));
 	//hide or show password
 	$('.hide-password').on('click', function(){
 		var togglePass= $(this),
@@ -88,7 +72,7 @@ jQuery(document).ready(function($){
 		formForgotPassword.addClass('is-selected');
 	}
 
-	 
+    
 	formLogin.find('input[type="submit"]').on('click', function(event){
 		event.preventDefault();
 		formLogin.find('input[type="email"]').toggleClass('has-error').next('span').toggleClass('is-visible');
