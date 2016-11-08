@@ -14,7 +14,25 @@ jQuery(document).ready(function($){
 	mainNav.on('click', function(event){
 		$(event.target).is(mainNav) && mainNav.children('ul').toggleClass('is-visible');
 	});
+/*
+	//open sign-up form
+	mainNav.on('click', '.cd-signup', signup_selected);
+	//open login-form form
+	mainNav.on('click', '.cd-signin', login_selected);
 
+	//close modal
+	formModal.on('click', function(event){
+		if( $(event.target).is(formModal) || $(event.target).is('.cd-close-form') ) {
+			formModal.removeClass('is-visible');
+		}	
+	});
+	//close modal when clicking the esc keyboard button
+	$(document).keyup(function(event){
+    	if(event.which=='27'){
+    		formModal.removeClass('is-visible');
+	    }
+    });
+*/
 	//switch from a tab to another
 	formModalTab.on('click', function(event) {
 		event.preventDefault();
@@ -22,12 +40,12 @@ jQuery(document).ready(function($){
 	});
 
 	//hide or show password
-	$('.show-password').on('click', function(){
+	$('.hide-password').on('click', function(){
 		var togglePass= $(this),
 			passwordField = togglePass.prev('input');
 		
-		( 'password' == passwordField.attr('type') ) ? passwordField.attr('type', 'password') : passwordField.attr('type', 'text');
-		( 'Show' == togglePass.text() ) ? togglePass.text('Hide') : togglePass.text('Show');
+		( 'password' == passwordField.attr('type') ) ? passwordField.attr('type', 'text') : passwordField.attr('type', 'password');
+		( 'Hide' == togglePass.text() ) ? togglePass.text('Show') : togglePass.text('Hide');
 		//focus and move cursor to the end of input field
 		passwordField.putCursorAtEnd();
 	});
